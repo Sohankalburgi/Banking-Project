@@ -1,0 +1,23 @@
+package com.example.banking.Controllers;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+@RestController
+public class BankControllers {
+	
+	@GetMapping(path = "/index")
+	public ModelAndView getLoginPage()
+	{
+		String ViewName = "index";
+		return new ModelAndView(ViewName);
+	}
+	
+	@GetMapping(path = "/CreateAccountpage")
+	public ModelAndView getCreateAccountPage()
+	{
+		String viewName = "CreateAccountpage";
+		return new ModelAndView(viewName);
+	}
+}

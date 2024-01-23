@@ -1,0 +1,64 @@
+.top_bar h1,h2{
+    display: inline;
+    color: white;
+    padding: 20px;
+    position:relative;
+    bottom: 25px;
+}
+body{
+    margin: 0px;
+    background-color: #e9c46a;
+}
+header{
+    border-style: solid;
+    background-color: blue;
+    padding: 20px;
+}
+.top_bar img{
+    width: 50px;
+    height: 60px;
+    padding: 5px;
+    display: inline;
+    border: 3px solid black;
+}
+
+form{
+    border: 3px solid blue;
+    margin-top: 300px;
+    margin-left: 300px;
+    margin-right: 200px;
+    padding: 2rem;
+}
+
+form input{
+    display: block;
+    width: 300px;
+    height: 30px;
+    font-size:22pt;
+    padding: 2px;
+    margin-bottom: 10px;
+}
+form label{
+    font-size: 21pt;
+}
+
+#submit{
+    margin: auto;
+    font-size: 22pt;
+    padding-right: 2px;
+    padding: 5px;
+    background-color: yellow;
+}
+
+#submit:hover{
+    background-color: greenyellow;
+    border: 1pt solid black;
+    color: white;
+}
+
+#address{
+    width:500px;
+    height: 100px;
+    padding: 0px;
+    font-size: 20pt;
+}
