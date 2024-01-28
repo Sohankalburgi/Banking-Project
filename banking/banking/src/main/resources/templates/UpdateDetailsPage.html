@@ -1,0 +1,49 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChangeSecurityCode</title>
+    <link rel="stylesheet" href="3.css">
+</head>
+<body>
+    <nav>
+    
+        <img src="images.png" alt="logo" >
+        <h1>Sample Bank </h1>
+        <h2><a href="index">Logout</a></h2>
+        
+    </nav>
+
+    <header>
+        <h2><u>Change Your Details</h2>
+    </header>
+	
+    <div>
+        <form th:action="@{/UpdateDetailsPage}" action="#" method="post" th:object="${up}">
+            <label for="Name">Name</label>
+            <br>
+            <input  type="text" th:field="*{Name}" name="Name" id="Name" placeholder="Name">   
+            <br>
+            <label for="PhoneNumber">Phone Number</label>
+            <br>
+            <input type="text"  th:field="*{PhoneNumber}" name="PhoneNumber" id="PhoneNumber" placeholder="PhoneNumber">
+            <br>
+            <label for="Address">Address</label>
+            <br>
+            <textarea  name="Address" th:field="*{Address}" id="Address" cols="30" rows="2" placeholder="Address"></textarea>
+            <br>
+            <label for="SecurityCode">SecurityCode</label>
+            <br>
+            <input  type="password" th:field="*{SecurityCode}" name="SecurityCode" id="SecurityCode" placeholder="SecurityCode">
+            <br>
+            <input type="hidden" th:field="*{AccountNumber}" name="AccountNumber" id="AccountNumber">
+           	<input type="hidden" th:field="*{IFSC}" name="IFSC" id="IFSC">
+           	<input type="hidden" th:field="*{id}" name="id" id="id">
+           	
+            <button type="submit">Change Details </button>
+
+        </form>
+    </div>
+</body>
+</html>

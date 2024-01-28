@@ -1,5 +1,0 @@
-package com.example.banking.Respository;
-
-public interface BankRepository {
-
-}

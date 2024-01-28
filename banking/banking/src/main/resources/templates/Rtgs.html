@@ -1,0 +1,42 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rtgs</title>
+    <link rel="stylesheet" href="4.css">
+</head>
+<body>
+    <nav>
+    
+        <img src="images.png" alt="logo" >
+        <h1>Sample Bank </h1>
+        <h2 style="font-style: italic; text-decoration: underline overline;"> RTGS Transfer SAME BANK TO SAME BANK</h2>
+        <h2><a href="index">Logout</a></h2>
+        
+    </nav>
+    <div class="center">
+    <form th:action="@{/Rtgs}" action="#" method="post" th:object="${ot}">
+    
+    <label for"AccountNumber">Your Account Number</label>
+    <br>
+    <input type="text" field="*{AccountNumber}" name="AccountNumber" id="AccountNumber" placeholder="Account Number">
+	<br>
+	
+    <label for="OtherAccountNumber">Beneficiary Account Number </label>
+    <br>
+    <input type="text" field="*{OtherAccountNumber}" name="OtherAccountNumber" id="OtherAccountNumber" placeholder="Beneficiary Account Number">
+
+    <br>
+    <label for="Amount">Amount</label>
+    <br>
+
+    <input type="text" field="*{Amount}" name="Amount" id="Amount" placeholder="Amount">
+
+    
+    <button type="submit">Transfer Money </button>
+</form>
+    </form>
+    </div>
+</body>
+</html>

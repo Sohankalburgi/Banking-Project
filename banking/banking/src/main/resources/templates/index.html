@@ -16,19 +16,19 @@
     </header>
 
     <div class="loginBox">
-        <form action="index.html">
+        <form th:action="@{/Landuppage}" method="get" th:object="${login}">
             <div class="textbox">
-            Account Number :
+            <label id="AccountNumber">Account Number :</label>
             <br>
-            <input type="text" name="AccountNumber" maxlength="12" minlength="12" id="AccountNumber">
+            <input field="*{AccountNumber}" type="text" name="AccountNumber" maxlength="8" minlength="8" id="AccountNumber">
             <br>
             <br>
-            Security Code :
+            <label id="SecurityCode">Security Code :</label>
             <br>
-            <input type="password" name="SecurityCode" id="SecurityCode">
+            <input field="*{SecurityCode}" type="password" name="SecurityCode" id="SecurityCode">
             </div>
             <div class="loginbutton">
-            <button type="submit">login</button>
+            <button type="submit" >login</button>
             </div>
         </form>
     </div>

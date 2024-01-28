@@ -23,23 +23,10 @@ header{
 }
 
 form{
-    border: 3px solid blue;
-    margin-top: 300px;
-    margin-left: 300px;
-    margin-right: 200px;
-    padding: 2rem;
-}
-
-form input{
-    display: block;
-    width: 300px;
-    height: 30px;
-    font-size:22pt;
-    padding: 2px;
-    margin-bottom: 10px;
-}
-form label{
-    font-size: 21pt;
+    margin: 0px auto;
+    border: solid 3pt blue;
+    display: flexbox;
+    padding: 20px;
 }
 
 #submit{
@@ -56,9 +43,3 @@ form label{
     color: white;
 }
 
-#address{
-    width:500px;
-    height: 100px;
-    padding: 0px;
-    font-size: 20pt;
-}

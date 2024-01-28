@@ -1,0 +1,60 @@
+img{
+    height: 5em;
+    width: 5em;
+}
+
+nav a{
+    color: black;
+    
+    text-decoration: none;
+    
+}
+
+nav{
+    width: 102%;
+    background-color: blue;
+    display: inline-flex;
+    justify-content:space-around ;
+    justify-items: baseline;
+    
+}
+
+a:hover{
+    background-color: coral;
+    
+    color: white;
+}
+body{
+    margin:0px;
+}
+
+form{
+    font-size: 2rem;
+    display: flexbox;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: solid blue 1pt;
+    padding: 2rem;
+}
+
+.center {
+    border: 5px solid;
+    margin: auto;
+    width: 50%;
+    padding: 2rem;
+    margin-top: 100px;
+    display: flexbox;
+
+}
+
+form input{
+    font-size: 2rem;
+}
+
+form button{
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 2px;
+    margin-top: 20px;
+}
+

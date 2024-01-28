@@ -1,0 +1,74 @@
+img{
+    height: 5em;
+    width: 5em;
+}
+
+nav a{
+    color: black;
+    
+    text-decoration: none;
+    
+}
+
+nav{
+    width: 102%;
+    background-color: blue;
+    display: inline-flex;
+    justify-content:space-around ;
+    justify-items: baseline;
+    
+}
+
+a:hover{
+    background-color: coral;
+    
+    color: white;
+}
+body{
+    margin:0px;
+}
+
+
+
+header h2{
+    margin: 4%;
+    font-size: 22pt;
+    font-weight: bolder;
+}
+
+div{
+    border-style: groove;
+    margin-left: 25%;
+    margin-right: 10%;
+    display: flexbox;
+    flex-direction: column;
+}
+
+div form{
+    display: flexbox;
+    font-size: 1rem;
+    padding: 2rem;
+}
+
+form input,form textarea{
+    font-size:1.7rem;
+    font-weight: bold;
+}
+
+form label{
+    font-size: 2rem;
+    color: red;
+}
+
+form button{
+    padding: 2px;
+    width: 100%;
+    font-size: 1.7rem;
+    margin: 10px;
+    background-color: yellow;
+}
+
+form button:hover{
+    font-weight: bolder;
+    border: solid 1pt yellow;
+}

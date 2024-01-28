@@ -1,6 +1,6 @@
 package com.example.banking.Entity;
 
-import java.util.UUID;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,7 +11,9 @@ import jakarta.persistence.Id;
 public class BankEntity {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	
 	private String AccountNumber;
 	
 	private String SecurityCode;
@@ -26,9 +28,6 @@ public class BankEntity {
 	
 	private String PhoneNumber;
 	
-	public void generateAccountNumber() {
-		this.AccountNumber = UUID.randomUUID().toString().substring(0,8);
-	}
 	
 	public String getAccountNumber() {
 		return AccountNumber;
@@ -85,6 +84,16 @@ public class BankEntity {
 	public void setPhoneNumber(String phoneNumber) {
 		PhoneNumber = phoneNumber;
 	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	
 	
 	
 }

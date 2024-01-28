@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPI</title>
+    <link rel="stylesheet" href="5.css">
+</head>
+<body>
+    <nav>
+    
+        <img src="images.png" alt="logo" >
+        <h1>Sample Bank </h1>
+        <h2 style="font-style: italic; text-decoration: overline underline; font-size: 22pt;"> This is UPI PAGE </h2>
+        <h2><a href="index">Logout</a></h2>
+        
+    </nav>
+    <div>
+        <h1 style="text-decoration: underline;">UPI QR CODE </h1>
+        <br>
+        <img th:src="|https://api.qrserver.com/v1/create-qr-code/?data=${PhoneNumber}@samplebank|" alt="UPI" title="UPI" />
+    </div>
+   
+</body>
+</html>

@@ -1,0 +1,62 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landuppage</title>
+    <link rel="stylesheet" href="2.css">
+</head>
+<body>
+    <nav>
+    
+        <img src="images.png" alt="logo" >
+        <h1>Sample Bank </h1>
+        
+        <h2><a href="aboutus.html">About us</a></h2>
+        <h2><a th:href="@{/UpdateDetailsPage	(AccountNumber=${bankfield.AccountNumber})}">Update Details </a></h2>
+        <h2><a href="index">Logout</a></h2>
+        
+    </nav>
+
+    <section>
+        <a th:href="@{/Rtgs(AccountNumber=${bankfield.AccountNumber})}">RTGS/NEFT</a>
+        <a th:href="@{/UPI(AccountNumber=${bankfield.AccountNumber})}">UPI Transfer</a>
+        
+    </section>
+
+    <div class="one">
+        <h1><u>Account Details</u></h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <td th:text="${bankfield.Name}">Sohan</td>
+            </tr>
+            <tr>
+                <th>Account Number</th>
+                <td th:text="${bankfield.AccountNumber}"></td>
+            </tr>
+            <tr>
+                <th>Phone Number</th>
+                <td th:text="${bankfield.PhoneNumber}">8088215919</td>
+            </tr>
+            <tr>
+                <th>IFSC</th>
+                <td th:text="${bankfield.IFSC}"></td>
+            </tr>
+            <tr>
+                <th class="ad">Address</th>
+                <td class="ad" th:text="${bankfield.Address}"></td>
+            </tr>
+            <tr>
+                <th>Security Code</th>
+                <td th:text="${bankfield.SecurityCode}"></td>
+            </tr>
+            <tr>
+                <th>Balance</th>
+                <td th:text="${bankfield.Balance}"> </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>
