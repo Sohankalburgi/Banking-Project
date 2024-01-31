@@ -64,4 +64,18 @@
 		<item key="INCLUDE_MASK" value="11"/>
 		<item key="HISTORY_SIZE" value="0"/>
 	</section>
+	<section name="NewAnnotationWizardPage">
+		<item key="add_documented" value="false"/>
+		<section name="AddRetention">
+			<item key="enabled" value="false"/>
+			<list key="selectedEnums">
+				<item value="CLASS"/>
+			</list>
+		</section>
+		<section name="AddTarget">
+			<item key="enabled" value="false"/>
+			<list key="selectedEnums">
+			</list>
+		</section>
+	</section>
 </section>

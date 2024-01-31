@@ -18,14 +18,14 @@
     <div class="center">
     <form th:action="@{/Rtgs}" action="#" method="post" th:object="${ot}">
     
-    <label for"AccountNumber">Your Account Number</label>
+    <label for="AccountNumber">Your Account Number</label>
     <br>
-    <input type="text" field="*{AccountNumber}" name="AccountNumber" id="AccountNumber" placeholder="Account Number">
+    <input type="text" field="*{AccountNumber}" name="AccountNumber" id="AccountNumber" minlength="14" maxlength="14" placeholder="Your Account Number">
 	<br>
 	
     <label for="OtherAccountNumber">Beneficiary Account Number </label>
     <br>
-    <input type="text" field="*{OtherAccountNumber}" name="OtherAccountNumber" id="OtherAccountNumber" placeholder="Beneficiary Account Number">
+    <input type="text" field="*{OtherAccountNumber}" name="OtherAccountNumber" maxlength="14" minlength="14" id="OtherAccountNumber" placeholder="Beneficiary Account Number">
 
     <br>
     <label for="Amount">Amount</label>

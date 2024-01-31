@@ -6,6 +6,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class BankEntity {
@@ -14,17 +18,23 @@ public class BankEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
+	
 	private String AccountNumber;
+	
 	
 	private String SecurityCode;
 	
 	private double Balance;
 	
+	
 	private String Name;
+	
 	
 	private String Address;
 	
+	
 	private String IFSC;
+	
 	
 	private String PhoneNumber;
 	

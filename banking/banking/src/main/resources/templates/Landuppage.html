@@ -13,7 +13,7 @@
         <h1>Sample Bank </h1>
         
         <h2><a href="aboutus.html">About us</a></h2>
-        <h2><a th:href="@{/UpdateDetailsPage	(AccountNumber=${bankfield.AccountNumber})}">Update Details </a></h2>
+        <h2><a th:href="@{/UpdateDetailsPage(AccountNumber=${bankfield.AccountNumber})}">Update Details </a></h2>
         <h2><a href="index">Logout</a></h2>
         
     </nav>
@@ -29,7 +29,7 @@
         <table>
             <tr>
                 <th>Name</th>
-                <td th:text="${bankfield.Name}">Sohan</td>
+                <td th:text="${bankfield.Name}"></td>
             </tr>
             <tr>
                 <th>Account Number</th>
@@ -37,7 +37,7 @@
             </tr>
             <tr>
                 <th>Phone Number</th>
-                <td th:text="${bankfield.PhoneNumber}">8088215919</td>
+                <td th:text="${bankfield.PhoneNumber}"></td>
             </tr>
             <tr>
                 <th>IFSC</th>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>createAccount</title>
     <link rel="stylesheet" href="1.css">
+    
 </head>
 <body>
     <header class="top_bar">
@@ -19,25 +20,29 @@
     	
     	<!--  The name and id must be same as the field and the field should be only field not th:field -->
     	<label for="AccountNumber">AccountNumber</label>
-    	<input field="*{AccountNumber}" type="text" minlength="8" maxlength="8" id="AccountNumber" name="AccountNumber">
-   
+    	<input th:field="*{AccountNumber}" type="text" minlength="14" maxlength="14" id="AccountNumber" name="AccountNumber">
+   		<span class="text-danger" th:errors="*{AccountNumber}"> </span> 
+   		
         <label for="Name">Name</label>
-        <input field="*{Name}" type="text" id="Name" name="Name">
+        <input th:field="*{Name}" type="text" id="Name" name="Name">
+        <span class="text-danger" th:errors="*{Name}"> </span> 
         
         <label for="PhoneNumber">Phone Number</label>
-        <input field="*{PhoneNumber}" type="text" minlength="10" maxlength="10" name="PhoneNumber" id="PhoneNumber">
-        
+        <input th:field="*{PhoneNumber}" type="text" minlength="10" maxlength="10" name="PhoneNumber" id="PhoneNumber">
+        <span class="text-danger" th:errors="*{PhoneNumber}"> </span> 
         
            
         <label for="IFSC">IFSC CODE</label>
-        <input field="*{IFSC}" type="text" name="IFSC" id="IFSC">
+        <input th:field="*{IFSC}" type="text" name="IFSC" id="IFSC">
+        <span class="text-danger" th:errors="*{IFSC}"> </span> 
         
         <label for="Address">Address</label>
-        <textarea field="*{Address}" rows="2" cols="50" name="address" id="address"></textarea>
-
+        <textarea th:field="*{Address}" rows="2" cols="50" name="address" id="address"></textarea>
+		<span class="text-danger" th:errors="*{Address}"> </span> 
         <br>
         <label for="SecurityCode">Security Code/PIN</label>
-        <input field="*{SecurityCode}" type="password" name="SecurityCode" id="SecurityCode">
+        <input th:field="*{SecurityCode}" type="password" name="SecurityCode" id="SecurityCode" minlength="6"  maxlength="6">
+        <span class="text-danger" th:errors="*{SecurityCode}"> </span> 
         
         <input type="hidden" field="*{balance}">
         

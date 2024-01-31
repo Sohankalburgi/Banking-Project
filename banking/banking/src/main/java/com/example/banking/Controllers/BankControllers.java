@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import com.example.banking.Entity.InternalBankBalance;
 import com.example.banking.Services.DBServices;
 import com.example.banking.Services.InternalBankservices;
 import com.example.banking.classed.OthersAccountdetails;
+import com.example.banking.classed.function;
 
 import ch.qos.logback.core.model.Model;
 import jakarta.persistence.EntityManager;
@@ -42,17 +44,26 @@ public class BankControllers {
 	
 	
 	@GetMapping(path = "/CreateAccountpage")
-	public ModelAndView getCreateAccountPage(String AccountNumber)
+	public ModelAndView getCreateAccountPage()
 	{
 		String viewName = "CreateAccountpage";
-		return new ModelAndView(viewName);
+		
+		Map<String,BankEntity> model = new HashMap<String, BankEntity>();
+		model.put("item",new BankEntity());
+		
+		return new ModelAndView(viewName,model);
 	}
 	
 	
 	
 	@PostMapping(path = "/CreateAccountpage" )
-	public ModelAndView submitCreateAccount(@ModelAttribute("item") BankEntity bankentity)
+	public ModelAndView submitCreateAccount(@ModelAttribute("item") BankEntity bankentity, BindingResult bindingresult)
 	{
+		if(bindingresult.hasErrors())
+		{
+			return new ModelAndView("CreateAccountpage");
+		}
+		
 		bankentity.setBalance(internalservice.getBalance(bankentity.getAccountNumber()));
 		dbservice.createAccount(bankentity);
 		
@@ -60,6 +71,8 @@ public class BankControllers {
 		RedirectView rdview = new RedirectView();
 		rdview.setUrl("/index");
 		return new ModelAndView(rdview);
+	
+		
 	}
 	
 
