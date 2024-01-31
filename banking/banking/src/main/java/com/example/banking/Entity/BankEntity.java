@@ -18,10 +18,10 @@ public class BankEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	
+	@Pattern(regexp = "\\d{14}",message = "Enter Right Account Number")
 	private String AccountNumber;
 	
-	
+	@Pattern(regexp = "\\d{6}",message = "Enter the Security Code")
 	private String SecurityCode;
 	
 	private double Balance;
@@ -35,7 +35,7 @@ public class BankEntity {
 	
 	private String IFSC;
 	
-	
+	@Pattern(regexp = "\\d{10}",message ="Enter the Correct Phone Number")
 	private String PhoneNumber;
 	
 	

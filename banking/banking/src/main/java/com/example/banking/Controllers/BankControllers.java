@@ -20,10 +20,11 @@ import com.example.banking.Entity.InternalBankBalance;
 import com.example.banking.Services.DBServices;
 import com.example.banking.Services.InternalBankservices;
 import com.example.banking.classed.OthersAccountdetails;
-import com.example.banking.classed.function;
+
 
 import ch.qos.logback.core.model.Model;
 import jakarta.persistence.EntityManager;
+import jakarta.validation.Valid;
 
 @RestController
 public class BankControllers {
@@ -57,7 +58,7 @@ public class BankControllers {
 	
 	
 	@PostMapping(path = "/CreateAccountpage" )
-	public ModelAndView submitCreateAccount(@ModelAttribute("item") BankEntity bankentity, BindingResult bindingresult)
+	public ModelAndView submitCreateAccount(@Valid @ModelAttribute("item") BankEntity bankentity, BindingResult bindingresult)
 	{
 		if(bindingresult.hasErrors())
 		{
