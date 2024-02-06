@@ -6,12 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -25,6 +20,7 @@ import com.example.banking.classed.OthersAccountdetails;
 import ch.qos.logback.core.model.Model;
 import jakarta.persistence.EntityManager;
 import jakarta.validation.Valid;
+import org.thymeleaf.model.IModel;
 
 @RestController
 public class BankControllers {
@@ -37,11 +33,42 @@ public class BankControllers {
 	
 
 	@GetMapping(path = "/index")
-	public ModelAndView getLoginPage(String BankAccount,String SecurityCode)
+	public ModelAndView getLoginPage()
 	{
 			String viewName = "index";
 			return new ModelAndView(viewName);
 	}
+
+	@PostMapping(path = "/index")
+	public ModelAndView postofLoginpage(@RequestParam("AccountNumber") String AccountNumber,@RequestParam("SecurityCode") String Password)
+	{
+		Map<String, String> model = new HashMap<>();
+		RedirectView rd = new RedirectView();
+		if(AccountNumber!=null) {
+			BankEntity check = dbservice.findaccountdetails(AccountNumber);
+
+			if (check != null) {
+				if (Password.equals(check.getSecurityCode())) {
+					System.out.println("login success");
+					rd.setUrl("/Landuppage?AccountNumber=" + AccountNumber);
+					return new ModelAndView(rd);
+				} else {
+					model.put("error", "Invalid Password");
+					System.out.println("password is invalid");
+					return new ModelAndView("index", model);
+				}
+			}
+			else{
+				System.out.println("Please Create New Online Account ");
+				model.put("error","Please Create An Account");
+				return new ModelAndView("index",model);
+			}
+		}
+
+		System.out.println("it is invalid ");
+		return  new ModelAndView("index");
+	}
+
 	
 	
 	@GetMapping(path = "/CreateAccountpage")

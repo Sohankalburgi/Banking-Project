@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+    <script src="/script.js"></script>
     <link rel="stylesheet" href="/stylesheet.css">
 </head>
 <body>
@@ -16,17 +17,19 @@
     </header>
 
     <div class="loginBox">
-        <form th:action="@{/Landuppage}" method="get" th:object="${login}">
+        <form th:action="@{/index}" method="post" >
             <div class="textbox">
             <label id="AccountNumber">Account Number :</label>
             <br>
-            <input field="*{AccountNumber}" type="text" name="AccountNumber" maxlength="14" minlength="14" id="AccountNumber" placeholder="AccountNumber">
-            <br>
+            <input type="text" name="AccountNumber" maxlength="14" minlength="14" id="AccountNumber" placeholder="AccountNumber">
+
+                <br>
             <br>
             <label id="SecurityCode">Security Code :</label>
             <br>
-            <input field="*{SecurityCode}" type="password" name="SecurityCode" id="SecurityCode" minlength="6" maxlength="6" placeholder="6-digit PIN"> 
+            <input type="password" name="SecurityCode" id="SecurityCode" minlength="6" maxlength="6" placeholder="6-digit PIN">
             </div>
+
             <div class="loginbutton">
             <button type="submit" >login</button>
             </div>
