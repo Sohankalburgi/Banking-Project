@@ -42,7 +42,7 @@ public class BankControllers {
 	@PostMapping(path = "/index")
 	public ModelAndView postofLoginpage(@RequestParam("AccountNumber") String AccountNumber,@RequestParam("SecurityCode") String Password)
 	{
-		Map<String, String> model = new HashMap<>();
+		Map<String,Object> model = new HashMap<>();
 		RedirectView rd = new RedirectView();
 		if(AccountNumber!=null) {
 			BankEntity check = dbservice.findaccountdetails(AccountNumber);
@@ -53,14 +53,14 @@ public class BankControllers {
 					rd.setUrl("/Landuppage?AccountNumber=" + AccountNumber);
 					return new ModelAndView(rd);
 				} else {
-					model.put("error", "Invalid Password");
+					model.put("erroh", "Invalid Password");
 					System.out.println("password is invalid");
 					return new ModelAndView("index", model);
 				}
 			}
 			else{
 				System.out.println("Please Create New Online Account ");
-				model.put("error","Please Create An Account");
+				model.put("erroh","Please Create An Account");
 				return new ModelAndView("index",model);
 			}
 		}
@@ -91,10 +91,19 @@ public class BankControllers {
 		{
 			return new ModelAndView("CreateAccountpage");
 		}
+		if(dbservice.checkbankaccountexist(bankentity.getAccountNumber()))
+		{
+			System.out.println("The Account Already Exists");
+			return new ModelAndView("index");
+		}
 		
 		bankentity.setBalance(internalservice.getBalance(bankentity.getAccountNumber()));
+
+
 		dbservice.createAccount(bankentity);
-		
+
+
+
 		
 		RedirectView rdview = new RedirectView();
 		rdview.setUrl("/index");
@@ -140,50 +149,65 @@ public class BankControllers {
 	
 	//right
 	@GetMapping(path="/Rtgs")
-	public ModelAndView getRtgsPage(@RequestParam String AccountNumber)
+	public ModelAndView getRtgsPage(@RequestParam("AccountNumber") String account)
 	{
+		System.out.println(account);
 		String viewName = "Rtgs";
-		Map<String, Object> model = new HashMap<>();
-		
-		model.put("ot",new OthersAccountdetails());
-		return new ModelAndView(viewName);
+		Map<String,Object> model = new HashMap<>();
+
+		model.put("AccountNumber",account);
+
+		return new ModelAndView(viewName,model);
 	}
 	
-	@PostMapping(path="/Rtgs")
-	public ModelAndView postRtgsPage(@ModelAttribute("ot") OthersAccountdetails other)
-	{
-		String AccountNumber = other.getAccountNumber();
-		InternalBankBalance internalofother = internalservice.findAccount(other.getOtherAccountNumber());
-		BankEntity currentbankAccount = dbservice.findaccountdetails(AccountNumber);
-		
-		if(currentbankAccount.getBalance()>=other.getAmount())
-		{
+
+
+	@PostMapping(path = "/Rtgs")
+	public ModelAndView postRtgsPage(@RequestParam("OtherAccountNumber")String AccountNumber,@RequestParam("Amount") String Amount,@RequestParam("AccountNumber")String currentAccount){
+		InternalBankBalance beneficaryaccount = internalservice.findAccount(AccountNumber);
+
+        if(AccountNumber.equals(currentAccount))
+        {
+            System.out.println("Transaction not possible because transfer to yourself");
+            return new ModelAndView("Rtgs");
+        }
+
+
+
+		System.out.println(currentAccount);
+		System.out.println(AccountNumber);
+
+		BankEntity currentbankaccount = dbservice.findaccountdetails(currentAccount);
+		double amount = Double.parseDouble(Amount);
+
+		if(currentbankaccount.getBalance()>=amount){
 			System.out.println("it is the successful transaction");
-			double net = currentbankAccount.getBalance()-other.getAmount();
-			currentbankAccount.setBalance(net);
-			double gain = internalofother.getBalance()+other.getAmount();
-			internalofother.setBalance(gain);
-			dbservice.createAccount(currentbankAccount);
-			internalservice.save(internalofother);
-			
-			BankEntity internaltoonline = dbservice.findaccountdetails(internalofother.getAccountNumber());
-			internaltoonline.setBalance(internalofother.getBalance());
-			
-			dbservice.createAccount(internaltoonline);
-			InternalBankBalance currentinternal = internalservice.findAccount(currentbankAccount.getAccountNumber());
-			currentinternal.setBalance(net);
-			internalservice.save(currentinternal);
-			
+			double net = currentbankaccount.getBalance()-amount;
+			currentbankaccount.setBalance(net);
+
+			double gain = beneficaryaccount.getBalance()+amount;
+			beneficaryaccount.setBalance(gain);
+			dbservice.createAccount(currentbankaccount);
+			internalservice.save(beneficaryaccount);
+
+			BankEntity beneficaryif = dbservice.findaccountdetails(AccountNumber);
+			if(beneficaryif!=null)
+			{
+				System.out.println("it has also online account ");
+				beneficaryif.setBalance(beneficaryaccount.getBalance());
+				dbservice.createAccount(beneficaryif);
+			}
+			InternalBankBalance currentbankentity = internalservice.findAccount(currentAccount);
+			currentbankentity.setBalance(net);
+			internalservice.save(currentbankentity);
 		}
-		else {
-			System.out.println("insufficent money");
+		else{
+			System.out.println("Insufficient Money");
 		}
-		
 		RedirectView rd = new RedirectView();
-		rd.setUrl("/Landuppage?AccountNumber="+currentbankAccount.getAccountNumber());
+		rd.setUrl("/Landuppage?AccountNumber="+currentAccount);
 		return new ModelAndView(rd);
 	}
-	
 	@GetMapping(path="/UPI")
 	public ModelAndView getUPIpage(@RequestParam String AccountNumber,@ModelAttribute("PhoneNumber")String PhoneNumber)
 	{

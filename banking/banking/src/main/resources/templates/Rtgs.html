@@ -16,22 +16,19 @@
         
     </nav>
     <div class="center">
-    <form th:action="@{/Rtgs}" action="#" method="post" th:object="${ot}">
-    
-    <label for="AccountNumber">Your Account Number</label>
-    <br>
-    <input type="text" field="*{AccountNumber}" name="AccountNumber" id="AccountNumber" minlength="14" maxlength="14" placeholder="Your Account Number">
-	<br>
+    <form th:action="@{/Rtgs(AccountNumber=${AccountNumber})}" action="#" method="post" >
+
+
 	
     <label for="OtherAccountNumber">Beneficiary Account Number </label>
     <br>
-    <input type="text" field="*{OtherAccountNumber}" name="OtherAccountNumber" maxlength="14" minlength="14" id="OtherAccountNumber" placeholder="Beneficiary Account Number">
+    <input type="text" name="OtherAccountNumber" maxlength="14" minlength="14" id="OtherAccountNumber" placeholder="Beneficiary Account Number">
 
     <br>
     <label for="Amount">Amount</label>
     <br>
 
-    <input type="text" field="*{Amount}" name="Amount" id="Amount" placeholder="Amount">
+    <input type="text"  name="Amount" id="Amount" placeholder="Amount">
 
     
     <button type="submit">Transfer Money </button>
