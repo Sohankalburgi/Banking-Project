@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.example.banking.Entity.BankEntity;
@@ -53,20 +54,21 @@ public class BankControllers {
 					rd.setUrl("/Landuppage?AccountNumber=" + AccountNumber);
 					return new ModelAndView(rd);
 				} else {
-					model.put("erroh", "Invalid Password");
-					System.out.println("password is invalid");
+					model.put("erroh", "password is invalid");
+					System.out.println("either password or AccountNumber is invalid");
 					return new ModelAndView("index", model);
 				}
 			}
 			else{
 				System.out.println("Please Create New Online Account ");
-				model.put("erroh","Please Create An Account");
+				model.put("erroh","Please Create An New Online Account");
 				return new ModelAndView("index",model);
 			}
+		}else {
+			model.put("erroh", "Ignoreit");
+			System.out.println("it is invalid ");
+			return new ModelAndView("index", model);
 		}
-
-		System.out.println("it is invalid ");
-		return  new ModelAndView("index");
 	}
 
 	
@@ -87,6 +89,7 @@ public class BankControllers {
 	@PostMapping(path = "/CreateAccountpage" )
 	public ModelAndView submitCreateAccount(@Valid @ModelAttribute("item") BankEntity bankentity, BindingResult bindingresult)
 	{
+		Map<String,String> model = new HashMap<>();
 		if(bindingresult.hasErrors())
 		{
 			return new ModelAndView("CreateAccountpage");
@@ -94,7 +97,8 @@ public class BankControllers {
 		if(dbservice.checkbankaccountexist(bankentity.getAccountNumber()))
 		{
 			System.out.println("The Account Already Exists");
-			return new ModelAndView("index");
+			model.put("erroh","Account Already Exists");
+			return new ModelAndView("index",model);
 		}
 		
 		bankentity.setBalance(internalservice.getBalance(bankentity.getAccountNumber()));
@@ -159,18 +163,28 @@ public class BankControllers {
 
 		return new ModelAndView(viewName,model);
 	}
-	
-
 
 	@PostMapping(path = "/Rtgs")
-	public ModelAndView postRtgsPage(@RequestParam("OtherAccountNumber")String AccountNumber,@RequestParam("Amount") String Amount,@RequestParam("AccountNumber")String currentAccount){
-		InternalBankBalance beneficaryaccount = internalservice.findAccount(AccountNumber);
+	public ModelAndView postRtgsPage(@RequestParam("OtherAccountNumber")String AccountNumber,@RequestParam("Amount") String Amount,@RequestParam(name="AccountNumber")String currentAccount){
 
+		System.out.println("Account Number of current Account"+currentAccount);
+
+		InternalBankBalance beneficaryaccount = internalservice.findAccount(AccountNumber);
+		Map<String,String> model = new HashMap<>();
         if(AccountNumber.equals(currentAccount))
         {
             System.out.println("Transaction not possible because transfer to yourself");
-            return new ModelAndView("Rtgs");
+            model.put("AccountNumber",currentAccount);
+			model.put("erroh","Transaction not possible because transfer to yourself");
+			return  new ModelAndView("Rtgs",model);
         }
+		if(!internalservice.checkAccountExist(AccountNumber))
+		{
+			System.out.println("Beneficary Account Does not exists in same Bank");
+			model.put("AccountNumber",currentAccount);
+			model.put("erroh","Beneficary Account Does not exists in same Bank");
+			return  new ModelAndView("Rtgs",model);
+		}
 
 
 
@@ -202,11 +216,16 @@ public class BankControllers {
 			internalservice.save(currentbankentity);
 		}
 		else{
+			model.put("erroh","Insufficient Money");
+			model.put("AccountNumber",currentAccount);
 			System.out.println("Insufficient Money");
+			return new ModelAndView("Rtgs",model);
 		}
+		model.put("erroh","Transaction Successful");
 		RedirectView rd = new RedirectView();
+
 		rd.setUrl("/Landuppage?AccountNumber="+currentAccount);
-		return new ModelAndView(rd);
+		return new ModelAndView(rd,model);
 	}
 	@GetMapping(path="/UPI")
 	public ModelAndView getUPIpage(@RequestParam String AccountNumber,@ModelAttribute("PhoneNumber")String PhoneNumber)
@@ -217,4 +236,6 @@ public class BankControllers {
 		String viewName = "UPI";
 		return new ModelAndView(viewName,model);
 	}
+
+
 }

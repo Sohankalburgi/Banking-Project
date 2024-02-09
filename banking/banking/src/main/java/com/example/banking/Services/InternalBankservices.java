@@ -34,6 +34,17 @@ public class InternalBankservices {
 	{
 		internalrepo.save(internal);
 	}
+
+	public boolean checkAccountExist(String AccountNumber)
+	{
+		InternalBankBalance ibb = internalrepo.findByAccountNumberofInternalBalance(AccountNumber);
+		if(ibb==null)
+		{
+			return false;
+		}
+		return true;
+	}
+
 	
 	
 }

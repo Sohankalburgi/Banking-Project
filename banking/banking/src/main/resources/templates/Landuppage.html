@@ -4,9 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landuppage</title>
+    <script>
+        function showError() {
+            var message = document.querySelector('body').dataset.erroh;
+            var check = "Ignoreit";
+            if(message!=null){
+            alert(message);
+            console.log('message is printed');
+            }
+        }
+
+        window.onload = showError;
+    </script>
     <link rel="stylesheet" href="2.css">
 </head>
-<body>
+<body th:data-erroh="${erroh}" >
     <nav>
     
         <img src="images.png" alt="logo" >

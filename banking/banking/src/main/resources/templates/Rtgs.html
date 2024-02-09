@@ -5,8 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rtgs</title>
     <link rel="stylesheet" href="4.css">
+    <script>
+        function showError() {
+            var message = document.querySelector('body').dataset.erroh;
+            var check = "Ignoreit";
+            if(message!=null){
+            alert(message);
+            console.log('message is printed');
+            }
+        }
+
+        window.onload = showError;
+    </script>
 </head>
-<body>
+<body th:data-erroh="${erroh}" >
     <nav>
     
         <img src="images.png" alt="logo" >
@@ -22,7 +34,7 @@
 	
     <label for="OtherAccountNumber">Beneficiary Account Number </label>
     <br>
-    <input type="text" name="OtherAccountNumber" maxlength="14" minlength="14" id="OtherAccountNumber" placeholder="Beneficiary Account Number">
+    <input type="text" name="OtherAccountNumber"  pattern="[0-9]{14}" maxlength="14" minlength="14" id="OtherAccountNumber" placeholder="Beneficiary Account Number">
 
     <br>
     <label for="Amount">Amount</label>

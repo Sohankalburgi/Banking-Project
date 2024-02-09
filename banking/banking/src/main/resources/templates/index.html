@@ -4,10 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+    <script>
+        function showError() {
+            var message = document.querySelector('body').dataset.erroh;
+            var check = "Ignoreit";
+            if(message!=null){
+            alert(message);
+            console.log('message is printed');
+            }
+        }
 
+        window.onload = showError;
+    </script>
     <link rel="stylesheet" href="/stylesheet.css">
 </head>
-<body th:onload="'alert(\'Message '  + ${erroh} +  ' found\');'" th:inline="javascript">
+    <body th:data-erroh="${erroh}" >
     <header class="top_bar">
     <img src="images.png" alt="logo" >
     <h1>Sample Bank </h1>
@@ -20,6 +31,7 @@
         <form th:action="@{/index}" method="post" >
             <div class="textbox">
             <label id="AccountNumber">Account Number :</label>
+
             <br>
             <input type="text" name="AccountNumber" maxlength="14" minlength="14" id="AccountNumber" placeholder="AccountNumber">
 
@@ -27,7 +39,7 @@
             <br>
             <label id="SecurityCode">Security Code :</label>
             <br>
-            <input type="password" name="SecurityCode" id="SecurityCode" minlength="6" maxlength="6" placeholder="6-digit PIN">
+            <input type="password"  name="SecurityCode" id="SecurityCode" minlength="6" maxlength="6" placeholder="6-digit PIN">
             </div>
 
             <div class="loginbutton">
