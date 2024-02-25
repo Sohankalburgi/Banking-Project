@@ -1,9 +1,13 @@
 package com.example.banking.Controllers;
 
 
+import java.time.YearMonth;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.example.banking.Entity.CardEntity;
+import com.example.banking.Generators.Generators;
+import com.example.banking.Services.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +35,9 @@ public class BankControllers {
 	
 	@Autowired
 	InternalBankservices internalservice;
+
+    @Autowired
+    CardService cardservice;
 	
 
 	@GetMapping(path = "/index")
@@ -93,6 +100,11 @@ public class BankControllers {
 		if(bindingresult.hasErrors())
 		{
 			return new ModelAndView("CreateAccountpage");
+		}
+		if(!internalservice.checkAccountExist(bankentity.getAccountNumber()))
+		{
+			model.put("erroh","Please Create an Offline Account in your nearest bank");
+			return  new ModelAndView("CreateAccountpage",model);
 		}
 		if(dbservice.checkbankaccountexist(bankentity.getAccountNumber()))
 		{
@@ -236,6 +248,96 @@ public class BankControllers {
 		String viewName = "UPI";
 		return new ModelAndView(viewName,model);
 	}
+
+
+    @GetMapping(path="/Card")
+    public ModelAndView getCardOne(@RequestParam String AccountNumber){
+        BankEntity b = dbservice.findaccountdetails(AccountNumber);
+        Map<String,Object> model = new HashMap<>();
+        if(b.getCardNumber()==null || b.getCardNumber().equals(""))
+        {
+            String viewName = "CreateCardPage";
+            model.put("AccountNumber",AccountNumber);
+            return new ModelAndView(viewName,model);
+        }
+
+        String viewName1 = "Card";
+		CardEntity cardentity = cardservice.getentityofcard(AccountNumber);
+		model.put("AccountNumber",AccountNumber);
+        model.put("CardNumber",b.getCardNumber());
+		model.put("Name",b.getName());
+		model.put("validity",cardentity.getValidity());
+		model.put("CVV",cardentity.getCVV());
+		model.put("Type",cardentity.getType());
+        ///model////
+        System.out.println("New Card is created");
+        return new ModelAndView(viewName1,model);
+    }
+
+    @PostMapping(path="/Card")
+    public ModelAndView postnewCard(@RequestParam("Type")String type,@RequestParam("limit")String limi,@RequestParam("PIN")String pin,@RequestParam(name="AccountNumber")String AccountNumber)
+    {
+        BankEntity bank = dbservice.findaccountdetails(AccountNumber);
+
+        CardEntity cardentity = new CardEntity();
+
+        YearMonth yearmonth = YearMonth.now();
+        String year = Integer.toString(yearmonth.getYear()+10);
+        String month = Integer.toString(yearmonth.getMonthValue());
+        String valid = year+"/"+month;
+
+        cardentity.setCVV(Generators.CVVGenerators(3));
+        cardentity.setValidity(valid);
+        cardentity.setLimitofTransaction(limi);
+        cardentity.setPIN(pin);
+        cardentity.setType(type);
+
+
+        cardentity.setAccountNumber(AccountNumber);
+        cardservice.createCard(cardentity);
+        bank.setCardNumber(cardservice.getCardNumber(AccountNumber));
+        dbservice.createAccount(bank);
+        RedirectView rd = new RedirectView();
+        rd.setUrl("/Card?AccountNumber="+AccountNumber);
+        return new ModelAndView(rd);
+    }
+
+
+	@GetMapping(path="/ChangePINCard")
+	public ModelAndView getchangepin(@RequestParam String AccountNumber)
+	{
+		Map<String,Object> model = new HashMap<>();
+		BankEntity bank = dbservice.findaccountdetails(AccountNumber);
+
+
+		String viewName = "ChangePINCard";
+		model.put("AccountNumber",AccountNumber);
+		model.put("CardNumber",bank.getCardNumber());
+		return new ModelAndView(viewName,model);
+	}
+
+	@PostMapping(path="/ChangePINCard")
+	public ModelAndView setPinchange(@RequestParam("AccountNumber")String AccountNumber,@RequestParam("OLD") String old,@RequestParam("NEW") String newer)
+	{
+		Map<String,Object> model = new HashMap<>();
+		CardEntity c = cardservice.getentityofcard(AccountNumber);
+		if(c.getPIN().equals(old))
+		{
+			c.setPIN(newer);
+			cardservice.createCard(c);
+			RedirectView rd = new RedirectView();
+			rd.setUrl("/Landuppage?AccountNumber="+AccountNumber);
+			return new ModelAndView(rd);
+		}
+		else{
+			String viewName = "ChangePINCard";
+			model.put("erroh","Wrong Old PIN");
+			model.put("AccountNumber",AccountNumber);
+			model.put("CardNumber",c.getCardNumber());
+			return new ModelAndView(viewName,model);
+		}
+	}
+
 
 
 }

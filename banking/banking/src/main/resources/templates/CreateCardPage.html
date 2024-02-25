@@ -1,0 +1,65 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Details</title>
+    <link rel="stylesheet" href="Card.css">
+    <script type="text/javascript" src="j1.js"></script>
+    <script type="text/javascript">
+        function showmess(){
+        alert("there is no card applied, please apply now");
+        }
+
+        function displaylimit(val)
+        {
+            if(val==="Visa Credit Card"){
+                document.getElementById("limit").value = "10,000";
+                console.log("hi");
+            }
+        }
+
+    </script>
+</head>
+<body onload="showmess()">
+<nav>
+
+    <img src="images.png" alt="logo" >
+    <h1>Sample Bank </h1>
+
+    <h2><a href="aboutus.html">About us</a></h2>
+
+    <h2><a href="index">Logout</a></h2>
+
+</nav>
+
+<h1 style="text-align: center;"> Card Details</h1>
+
+<form th:action="@{/Card(AccountNumber=${AccountNumber})}" method="post" >
+    <label for="Type">Type Of Card </label>
+    <select onclick="displaylimit(this.value)" id="Type" name="Type">
+        <option id="Type"  name ="Type" value="Visa Credit Card">Visa Credit Card</option>
+        <option id="Type" name ="Type" value="Platinum Visa Credit Card">Platinum Visa Credit Card</option>
+        <option id="Type" name ="Type" value="Rupay Credit Card">Rupay Credit Card</option>
+        <option id="Type" name ="Type" value="Golden Rupay Credit Card">Golden Rupay Credit Card</option>
+
+        <option id="Type" name ="Type" value="Visa Debit Card ">Visa Debit Card</option>
+        <option id="Type" name ="Type" value="Platinum Visa Debit Card">Platinum Visa Debit Card</option>
+        <option id="Type" name ="Type" value="Rupay Debit Card">Rupay Debit Card</option>
+        <option id="Type" name ="Type" value="Golden Rupay Debit Card">Golden Rupay Debit Card</option>
+    </select>
+
+    <label for="limit">Transaction Limit </label>
+    <input type="text" name="limit" id="limit" >
+
+    <label id="PIN">4-digit PIN</label>
+    <input type="text" name="PIN" id="PIN" pattern="\d{4}" maxlength="4" minlength="4">
+
+    <button type="Submit"> Submit</button>
+
+</form>
+
+
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="cardsheet2.css">
+
+</head>
+<body>
+
+<a th:href="@{/ChangePINCard(AccountNumber=${AccountNumber})}"> Change Your 4 -digit PIN</a>
+
+<div>
+    Card Number : <span th:text="${CardNumber}">CardNumber</span>
+    <br>
+    Name : <span th:text="${Name}"></span>
+    <br>
+    validility : <span th:text="${validity}"></span>
+    <br>
+    CVV : <span th:text="${CVV}"></span>
+    <br>
+    Type : <span th:text="${Type}"></span>
+</div>
+</body>
+</html>

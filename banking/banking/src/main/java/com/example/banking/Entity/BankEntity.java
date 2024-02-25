@@ -34,6 +34,8 @@ public class BankEntity {
 	
 	
 	private String IFSC;
+
+	private String CardNumber;
 	
 	@Pattern(regexp = "\\d{10}",message ="Enter the Correct Phone Number")
 	private String PhoneNumber;
@@ -102,8 +104,12 @@ public class BankEntity {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-	
-	
-	
+
+	public String getCardNumber() {
+		return CardNumber;
+	}
+
+	public void setCardNumber(String cardNumber) {
+		CardNumber = cardNumber;
+	}
 }
