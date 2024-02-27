@@ -5,8 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link rel="stylesheet" href="/stylesheet.css">
+    <script>
+        function showError() {
+            var message = document.querySelector('body').dataset.erroh;
+            var check = "Ignoreit";
+            if(message!=null){
+            alert(message);
+            console.log('message is printed');
+            }
+        }
+
+        window.onload = showError;
+    </script>
+    
 </head>
-<body>
+<body th:data-erroh="${erroh}" >
+    
+    
     <header class="top_bar">
     <img src="images.png" alt="logo" >
     <h1>Sample Bank </h1>
@@ -16,16 +31,16 @@
     </header>
 
     <div class="loginBox">
-        <form th:action="@{/Landuppage}" method="get" th:object="${login}">
+        <form th:action="@{/index}" method="post" >
             <div class="textbox">
             <label id="AccountNumber">Account Number :</label>
             <br>
-            <input field="*{AccountNumber}" type="text" name="AccountNumber" maxlength="8" minlength="8" id="AccountNumber">
+            <input field="*{AccountNumber}" type="text" name="AccountNumber" maxlength="8" minlength="8" id="AccountNumber" placeholder="enter your 14 digit account number">
             <br>
             <br>
             <label id="SecurityCode">Security Code :</label>
             <br>
-            <input field="*{SecurityCode}" type="password" name="SecurityCode" id="SecurityCode">
+            <input field="*{SecurityCode}" type="password" name="SecurityCode" id="SecurityCode" placeholder="enter your security code">
             </div>
             <div class="loginbutton">
             <button type="submit" >login</button>
