@@ -6,6 +6,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class BankEntity {
@@ -14,18 +18,26 @@ public class BankEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
+	@Pattern(regexp = "\\d{14}",message = "Enter Right Account Number")
 	private String AccountNumber;
 	
+	@Pattern(regexp = "\\d{6}",message = "Enter the Security Code")
 	private String SecurityCode;
 	
 	private double Balance;
 	
+	
 	private String Name;
+	
 	
 	private String Address;
 	
-	private String IFSC;
 	
+	private String IFSC;
+
+	private String CardNumber;
+	
+	@Pattern(regexp = "\\d{10}",message ="Enter the Correct Phone Number")
 	private String PhoneNumber;
 	
 	
@@ -92,8 +104,12 @@ public class BankEntity {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-	
-	
-	
+
+	public String getCardNumber() {
+		return CardNumber;
+	}
+
+	public void setCardNumber(String cardNumber) {
+		CardNumber = cardNumber;
+	}
 }

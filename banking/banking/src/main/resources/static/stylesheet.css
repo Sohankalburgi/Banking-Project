@@ -1,18 +1,28 @@
 .top_bar h1,h2{
     display: inline;
-    color: white;
+    color: rgb(25, 223, 245);
     padding: 20px;
     position:relative;
     bottom: 25px;
+    font-style: italic;
 }
 body{
     margin: 0px;
-    background-color: #e9c46a;
+    background-image: url(touchbank.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 header{
     border-style: solid;
-    background-color: blue;
-    padding: 20px;
+    background-color:rgb(20, 7, 68);
+    padding: 30px;
+    box-sizing: 30%;
+
+}
+a:hover{
+   text-decoration: underline
+   
+    color;red;
 }
 .top_bar img{
     width: 50px;
@@ -33,7 +43,9 @@ header{
     padding-bottom: 30px;
     font-size: larger;
     border-radius: 20px;
-    background-color: blue;
+    background-image: url(touchbank.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
     color: white;
     border-color:black;
 }
@@ -45,6 +57,8 @@ header{
     padding: 5px;
     font-size: 16pt;
     font-weight: bold;
+    height: 15%;
+    width: 90%;
 }
 
 .loginbutton button{
@@ -54,7 +68,7 @@ header{
     width: 250px;
     margin-left: 20px;
     margin-right: 30px;
-    background-color: chartreuse;
+    background-color: rgb(0, 255, 255);
     font-weight: bolder;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -65,12 +79,84 @@ header{
 }
 .textbox{
     font-size: 18pt;
-    color: orangered;
+    color: rgb(210, 207, 205);
     font-weight: bolder;
+width: 300px;
     
 }
 
 .top_bar h2:hover{
-    background-color: coral;
+    
+    color: red;
+}
+form input{
+    font-size: 0.7px;
+    padding: 20px;
+    color: grey;
+    text-align: center;
+    justify-content: space-evenly;
+    size: 10;
+    width: 300px;
+}
+.footer{
+    width: 110%;
+    height: 120px;
+    background-color: rgb(91, 139, 198);
+    margin-top: 10px;
+    display: flex; 
+}
+.footer_section{
+    width: 30%;
+    height: 120px;
+   box-shadow: 1px 1px 8px #00000042;
+    margin-right: 20%;
+    display: flex;
+    
+}
+.image_container{
+    width: 35%;
+    height: 120px;
+    display: flex;
+   
+}
+.image_container>img{
+    width: 100%;
+    height: 120px; 
+     
+}
+.linkedin{
+    width: 30px;
+    height: 30px;
+    margin:10% ;
+    display: flex;
+}
+.instagram{
+    width: 30px;
+    height: 30px;
+    margin:10% ;
+}
+
+.footer_section1{
+    width: 30%;
+    height: 120px;
+   box-shadow: 1px 1px 8px #00000042;
+    margin-right: 20%;
+    display: flex;
+    
+}
+.image_container1{
+    width: 35%;
+    height: 120px;
+    
+}
+.image_container1>img{
+    width: 100%;
+    height: 120px; 
+
+}
+.linkedin1{
+    width: 30px;
+    height: 30px;
+    margin:20% ;
 }
 

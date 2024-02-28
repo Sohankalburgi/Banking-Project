@@ -5,8 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rtgs</title>
     <link rel="stylesheet" href="4.css">
+    <script>
+        function showError() {
+            var message = document.querySelector('body').dataset.erroh;
+            var check = "Ignoreit";
+            if(message!=null){
+            alert(message);
+            console.log('message is printed');
+            }
+        }
+
+        window.onload = showError;
+    </script>
 </head>
-<body>
+<body th:data-erroh="${erroh}" >
+
+
     <nav>
     
         <img src="images.png" alt="logo" >
@@ -15,28 +29,65 @@
         <h2><a href="index">Logout</a></h2>
         
     </nav>
+    <figure>
+        
+    </figure>
     <div class="center">
-    <form th:action="@{/Rtgs}" action="#" method="post" th:object="${ot}">
-    
-    <label for"AccountNumber">Your Account Number</label>
-    <br>
-    <input type="text" field="*{AccountNumber}" name="AccountNumber" id="AccountNumber" placeholder="Account Number">
-	<br>
+        <form th:action="@{/Rtgs(AccountNumber=${AccountNumber})}" action="#" method="post" >
+
+
 	
-    <label for="OtherAccountNumber">Beneficiary Account Number </label>
-    <br>
-    <input type="text" field="*{OtherAccountNumber}" name="OtherAccountNumber" id="OtherAccountNumber" placeholder="Beneficiary Account Number">
-
-    <br>
-    <label for="Amount">Amount</label>
-    <br>
-
-    <input type="text" field="*{Amount}" name="Amount" id="Amount" placeholder="Amount">
-
-    
-    <button type="submit">Transfer Money </button>
-</form>
+            <label for="OtherAccountNumber">Beneficiary Account Number </label>
+            <br>
+            <input type="text" name="OtherAccountNumber"  pattern="[0-9]{14}" maxlength="14" minlength="14" id="OtherAccountNumber" placeholder="Beneficiary Account Number">
+        
+            <br>
+            <label for="Amount">Amount</label>
+            <br>
+        
+            <input type="text"  name="Amount" id="Amount" placeholder="Amount" pattern="\d*"><br>
+        
+            
+            <button type="submit">Transfer Money </button>
+        </form>
     </form>
+    </div>
+    <div class="footer">
+        <div class="footer_section">
+            <div class="image_container">
+                <img src="WKC PIC SQUARE.jpg" alt="shreyas">
+            </div>
+            <div class="details">
+              <a href="https://www.linkedin.com/in/shreyas-shanubag-626a66222" target="_blank">
+                <img class="linkedin"src="linkedin.jpg" alt="linkedin">
+                
+              </a>
+              
+              <h3>SHREYAS SHANUBAG</h3>
+            
+              
+            </div>
+
+        </div>
+        
+
+        <div class="footer_section1">
+            <div class="image_container1">
+                <img src="sohan.jpg" alt="sohan">
+            </div>
+            <div class="details1">
+                <a href="https://www.linkedin.com/in/sohan-kalburgi-225881277/" target="_blank">
+                    <img class="linkedin1"src="linkedin.jpg" alt="linkedin">
+                   
+                  </a>
+                  
+                
+                <H3>SOHAN K.E</H3>
+                  
+            </div>
+
+        </div>
+
     </div>
 </body>
 </html>

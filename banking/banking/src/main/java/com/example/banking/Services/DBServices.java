@@ -36,6 +36,16 @@ public class DBServices {
 		obj.setPhoneNumber(bankentity.getPhoneNumber());
 		bankrepo.save(obj);
 	}
+
+	public boolean checkbankaccountexist(String AccountNumber)
+	{
+		BankEntity bank = bankrepo.findByAccountNumber(AccountNumber);
+		if(bank==null)
+		{
+			return false;
+		}
+		return true;
+	}
 	
 	
 }

@@ -1,32 +1,118 @@
 .top_bar h1,h2{
     display: inline;
-    color: white;
-    padding: 20px;
+
+    padding: 30px;
     position:relative;
-    bottom: 25px;
+    bottom: 2px;
+    font-style: italic;
+
+}
+
+h1{
+    color: aqua;
 }
 body{
     margin: 0px;
-    background-color: #e9c46a;
+
+    background-position: center;
+    
+}
+img{
+   width:1500;
+   height: 700;
+   top: 250px;
+   left: 300px;
+   image-resolution: 100000px;
+  
+}
+p{
+font-style: italic;
+font-size: 50px;
+color: rgb(11, 16, 63);
+align-content: center;
+padding-left: 550px;
+padding-right: 50px;
+justify-content: center;
+justify-items: baseline;
 }
 header{
     border-style: solid;
-    background-color: blue;
-    padding: 20px;
+    background-color:rgb(7, 4, 35);
+    padding: 40px;
+    box-sizing: 30%;
+    font-size:medium;
+     
 }
+a{
+    text-decoration: none;
+    color: hsl(181, 88%, 51%);
+}
+
+a:hover{
+    text-decoration:underline;
+    color:red;
+   
+}
+
+
+
 .top_bar img{
     width: 50px;
     height: 60px;
     padding: 5px;
     display: inline;
-    border: 3px solid black;
+    
+    padding: 20px;
+    background-image: c:\Users\hp\OneDrive\Desktop\digital bank.jpg;
+
+}
+.top_bar{
+    
+    
+    color:red;
+
 }
 
+
 form{
-    margin: 0px auto;
-    border: solid 3pt blue;
+    background-image: url(bg1.jpg);
+    
+    font-size: 2rem;
     display: flexbox;
+    flex-direction: column;
+    justify-content: space-evenly;
+    box-shadow: 2px 2px  14px  #000000bc;
+    border-radius: 8px;
+    padding: 2rem;
+    color: #ec0c0c;
+    margin: auto;
+    width: 50%;
+    padding: 2rem;
+    margin-top: 100px;
+    display: flexbox;
+    font-style: italic;
+}
+form input{
+    font-size: 1.3rem;
     padding: 20px;
+    color: grey;
+    text-align: center;
+    justify-content: space-evenly;
+    size: 70;
+    width: 400px;
+    height: 40px;
+    border-radius: 4px;
+}
+form>textarea{
+    font-size: 1.3rem;
+    padding: 20px;
+    color: grey;
+    text-align: center;
+    justify-content: space-evenly;
+    size: 70;
+    width: 400px;
+    height: 100px;
+    border-radius: 4px;
 }
 
 #submit{
@@ -34,12 +120,77 @@ form{
     font-size: 22pt;
     padding-right: 2px;
     padding: 5px;
-    background-color: yellow;
+    background-color: rgb(7, 195, 198);
+    cursor: pointer;
+
 }
 
 #submit:hover{
-    background-color: greenyellow;
-    border: 1pt solid black;
-    color: white;
+
+    border: 5px solid rgb(7, 195, 198);
+    color:white;
+    background-color:rgb(27, 188, 6);
 }
+.footer{
+    width: 110%;
+    height: 120px;
+    background-color: rgb(91, 139, 198);
+    margin-top: 10px;
+    display: flex; 
+}
+.footer_section{
+    width: 30%;
+    height: 120px;
+   box-shadow: 1px 1px 8px #00000042;
+    margin-right: 20%;
+    display: flex;
+    
+}
+.image_container{
+    width: 35%;
+    height: 120px;
+    display: flex;
+   
+}
+.image_container>img{
+    width: 100%;
+    height: 120px; 
+     
+}
+.linkedin{
+    width: 30px;
+    height: 30px;
+    margin:10% ;
+    display: flex;
+}
+.instagram{
+    width: 30px;
+    height: 30px;
+    margin:10% ;
+}
+
+.footer_section1{
+    width: 30%;
+    height: 120px;
+   box-shadow: 1px 1px 8px #00000042;
+    margin-right: 20%;
+    display: flex;
+    
+}
+.image_container1{
+    width: 35%;
+    height: 120px;
+    
+}
+.image_container1>img{
+    width: 100%;
+    height: 120px; 
+
+}
+.linkedin1{
+    width: 30px;
+    height: 30px;
+    margin:20% ;
+}
+
 

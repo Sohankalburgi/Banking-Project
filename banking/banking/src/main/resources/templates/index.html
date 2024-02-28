@@ -17,11 +17,8 @@
 
         window.onload = showError;
     </script>
-    
 </head>
 <body th:data-erroh="${erroh}" >
-    
-    
     <header class="top_bar">
     <img src="images.png" alt="logo" >
     <h1>Sample Bank </h1>
@@ -35,17 +32,54 @@
             <div class="textbox">
             <label id="AccountNumber">Account Number :</label>
             <br>
-            <input field="*{AccountNumber}" type="text" name="AccountNumber" maxlength="8" minlength="8" id="AccountNumber" placeholder="enter your 14 digit account number">
+            <input  type="text" name="AccountNumber" maxlength="8" minlength="8" id="AccountNumber" placeholder=" 14 digit account number" pattern="\d{14}">
             <br>
             <br>
             <label id="SecurityCode">Security Code :</label>
             <br>
-            <input field="*{SecurityCode}" type="password" name="SecurityCode" id="SecurityCode" placeholder="enter your security code">
-            </div>
+            <input type="password"  name="SecurityCode" id="SecurityCode" minlength="6" maxlength="6" placeholder="6-digit PIN" pattern="\d{6}">      
+              </div>
             <div class="loginbutton">
             <button type="submit" >login</button>
             </div>
         </form>
+    </div>
+    <div class="footer">
+        <div class="footer_section">
+            <div class="image_container">
+                <img src="WKC PIC SQUARE.jpg" alt="shreyas">
+            </div>
+            <div class="details">
+              <a href="https://www.linkedin.com/in/shreyas-shanubag-626a66222" target="_blank">
+                <img class="linkedin"src="linkedin.jpg" alt="linkedin">
+                
+              </a>
+              
+              <h3>SHREYAS SHANUBAG</h3>
+            
+              
+            </div>
+
+        </div>
+        
+
+        <div class="footer_section1">
+            <div class="image_container1">
+                <img src="sohan.jpg" alt="sohan">
+            </div>
+            <div class="details1">
+                <a href="https://www.linkedin.com/in/sohan-kalburgi-225881277/" target="_blank">
+                    <img class="linkedin1"src="linkedin.jpg" alt="linkedin">
+                   
+                  </a>
+                  
+                
+                <H3>SOHAN K.E</H3>
+                  
+            </div>
+
+        </div>
+
     </div>
     
 

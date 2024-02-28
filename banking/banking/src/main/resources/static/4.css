@@ -4,37 +4,71 @@ img{
 }
 
 nav a{
-    color: black;
+    color: hsl(192, 93%, 49%);
     
     text-decoration: none;
+    font-style: italic;
     
+}
+body{
+    background-image: url(card.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+   
 }
 
 nav{
-    width: 102%;
-    background-color: blue;
+    width: 98%;
+    background-color:#080843;
     display: inline-flex;
     justify-content:space-around ;
     justify-items: baseline;
+    box-sizing: 30%;
+    padding: 30px;
     
+    
+}
+h1{
+    
+        color: #0dfafa;
+        text-decoration: double;
+        font-style: italic;
+        
+}
+figure{
+    img{
+
+    height: 50rem;
+    width: 80rem;
+    
+}}
+h2{
+    
+        color: #02f9f5;
+        text-decoration: double;
+        
 }
 
 a:hover{
-    background-color: coral;
+    text-decoration: underline;
     
-    color: white;
+    color:red;
+}
 }
 body{
     margin:0px;
+    
 }
 
 form{
+    background-color: skyblue;
     font-size: 2rem;
     display: flexbox;
     flex-direction: column;
     justify-content: space-evenly;
-    border: solid blue 1pt;
+    box-shadow: 2px 2px 14px solid rgb(14, 0, 0);
     padding: 2rem;
+    color: red;
 }
 
 .center {
@@ -44,11 +78,16 @@ form{
     padding: 2rem;
     margin-top: 100px;
     display: flexbox;
+    font-style: italic;
+    box-shadow: 2px 2px 14px solid rgb(14, 0, 0);
 
 }
 
 form input{
-    font-size: 2rem;
+    font-size: 1rem;
+    padding: 20px;
+    box-shadow: 2px 2px 14px solid rgb(14, 0, 0);
+
 }
 
 form button{
@@ -56,5 +95,77 @@ form button{
     font-size: 1.5rem;
     padding: 2px;
     margin-top: 20px;
+    background-color:rgb(17, 9, 109);
+    color: white;
+    box-shadow: 2px 2px 14px solid rgb(14, 0, 0);
+
+
+}
+form button:hover{
+    font-weight: bolder;
+    border: solid 1pt rgb(240, 248, 248);
+    background-color:rgb(27, 188, 6);
+   color: rgb(255, 255, 255);
+}
+.footer{
+    width: 110%;
+    height: 120px;
+    background-color: rgb(91, 139, 198);
+    margin-top: 10px;
+    display: flex; 
+}
+.footer_section{
+    width: 30%;
+    height: 120px;
+   box-shadow: 1px 1px 8px #00000042;
+    margin-right: 20%;
+    display: flex;
+    
+}
+.image_container{
+    width: 35%;
+    height: 120px;
+    display: flex;
+   
+}
+.image_container>img{
+    width: 100%;
+    height: 120px; 
+     
+}
+.linkedin{
+    width: 30px;
+    height: 30px;
+    margin:10% ;
+    display: flex;
+}
+.instagram{
+    width: 30px;
+    height: 30px;
+    margin:10% ;
+}
+
+.footer_section1{
+    width: 30%;
+    height: 120px;
+   box-shadow: 1px 1px 8px #00000042;
+    margin-right: 20%;
+    display: flex;
+    
+}
+.image_container1{
+    width: 35%;
+    height: 120px;
+    
+}
+.image_container1>img{
+    width: 100%;
+    height: 120px; 
+
+}
+.linkedin1{
+    width: 30px;
+    height: 30px;
+    margin:20% ;
 }
 

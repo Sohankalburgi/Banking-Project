@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="2.css">
 </head>
 <body>
+    
     <nav>
     
         <img src="images.png" alt="logo" >
         <h1>Sample Bank </h1>
         
         <h2><a href="aboutus.html">About us</a></h2>
-        <h2><a th:href="@{/UpdateDetailsPage	(AccountNumber=${bankfield.AccountNumber})}">Update Details </a></h2>
+        <h2><a th:href="@{/UpdateDetailsPage(AccountNumber=${bankfield.AccountNumber})}">Update Details </a></h2>
         <h2><a href="index">Logout</a></h2>
         
     </nav>
@@ -23,10 +24,14 @@
         <a th:href="@{/UPI(AccountNumber=${bankfield.AccountNumber})}">UPI Transfer</a>
         
     </section>
+    <figure>
+    <img src="chek.gif" alt="chek.gif">
+</figure>
 
     <div class="one">
         <h1><u>Account Details</u></h1>
         <table>
+            
             <tr>
                 <th>Name</th>
                 <td th:text="${bankfield.Name}">Sohan</td>
@@ -56,6 +61,43 @@
                 <td th:text="${bankfield.Balance}"> </td>
             </tr>
         </table>
+    </div>
+    <div class="footer">
+        <div class="footer_section">
+            <div class="image_container">
+                <img src="WKC PIC SQUARE.jpg" alt="shreyas">
+            </div>
+            <div class="details">
+              <a href="https://www.linkedin.com/in/shreyas-shanubag-626a66222" target="_blank">
+                <img class="linkedin"src="linkedin.jpg" alt="linkedin">
+                
+              </a>
+              
+              <h3>SHREYAS SHANUBAG</h3>
+            
+              
+            </div>
+
+        </div>
+        
+
+        <div class="footer_section1">
+            <div class="image_container1">
+                <img src="sohan.jpg" alt="sohan">
+            </div>
+            <div class="details1">
+                <a href="https://www.linkedin.com/in/sohan-kalburgi-225881277/" target="_blank">
+                    <img class="linkedin1"src="linkedin.jpg" alt="linkedin">
+                   
+                  </a>
+                  
+                
+                <H3>SOHAN K.E</H3>
+                  
+            </div>
+
+        </div>
+
     </div>
 
 </body>

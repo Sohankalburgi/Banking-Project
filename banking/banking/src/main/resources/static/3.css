@@ -1,44 +1,68 @@
 img{
+
     height: 5em;
     width: 5em;
 }
 
 nav a{
-    color: black;
+    color: #10d4de;
+    text-decoration: double;
     
-    text-decoration: none;
     
+}
+h1{
+    
+        color: #12e5e2;
+        text-decoration: double;
+        
+}
+h2{
+    
+        color: #18f2e0;
+        text-decoration: double;
+        
 }
 
 nav{
-    width: 102%;
-    background-color: blue;
+    width: 100%;
+    background-color:#1d0846;
     display: inline-flex;
     justify-content:space-around ;
     justify-items: baseline;
+    font-style: italic;
+    font-size::xx-large;
+    box-sizing: 30%;
+    padding: 30px;
+    
     
 }
 
 a:hover{
-    background-color: coral;
+    text-decoration: underline;
     
-    color: white;
+    color:red;
 }
 body{
-    margin:0px;
+    margin:5px;
+    background-image: url(changesecu2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    image-resolution: 10000px;
 }
 
 
 
 header h2{
-    margin: 4%;
+    margin: 3%;
     font-size: 22pt;
     font-weight: bolder;
+    color: rgb(0, 0, 0);
+
 }
 
 div{
     border-style: groove;
-    margin-left: 25%;
+    margin-left: 10%;
     margin-right: 10%;
     display: flexbox;
     flex-direction: column;
@@ -48,16 +72,28 @@ div form{
     display: flexbox;
     font-size: 1rem;
     padding: 2rem;
+    box-shadow: 2px 2px 14px #fffdfd42;
+    background-color:transparent;
 }
 
 form input,form textarea{
-    font-size:1.7rem;
-    font-weight: bold;
+    font-size:1.5rem;
+    font-weight:100;
+    size: 70;
+    width: 400px;
+    height: 40px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 14px #000000f4;
+
 }
 
 form label{
     font-size: 2rem;
-    color: red;
+    color: rgb(10, 3, 3);
+    font-style: italic;
+    font-weight: 800px;
+    
+
 }
 
 form button{
@@ -65,10 +101,77 @@ form button{
     width: 100%;
     font-size: 1.7rem;
     margin: 10px;
-    background-color: yellow;
+    background-color: rgb(31, 236, 192);
 }
 
 form button:hover{
     font-weight: bolder;
-    border: solid 1pt yellow;
+    border: solid 1pt rgb(240, 248, 248);
+    background-color:rgb(27, 188, 6);   color: azure;
+   box-shadow: 2px 2px 14px #0b0303b0;
+
+}
+.footer{
+    width: 110%;
+    height: 120px;
+    background-color: rgb(91, 139, 198);
+    margin-top: 10px;
+    display: flex; 
+}
+.footer_section{
+    width: 30%;
+    height: 120px;
+   box-shadow: 1px 1px 8px #00000042;
+    margin-right: 20%;
+    display: flex;
+    
+}
+.image_container{
+    width: 35%;
+    height: 120px;
+    display: flex;
+   
+}
+.image_container>img{
+    width: 100%;
+    height: 120px; 
+     
+}
+.linkedin{
+    width: 30px;
+    height: 30px;
+    margin:10% ;
+    display: flex;
+}
+.instagram{
+    width: 30px;
+    height: 30px;
+    margin:10% ;
+}
+
+.footer_section1{
+    width: 30%;
+    height: 120px;
+   box-shadow: 1px 1px 8px #00000042;
+    margin-right: 20%;
+    display: flex;
+    
+}
+.image_container1{
+    width: 35%;
+    height: 120px;
+    
+}
+.image_container1>img{
+    width: 100%;
+    height: 120px; 
+
+}
+.linkedin1{
+    width: 30px;
+    height: 30px;
+    margin:20% ;
+}
+span>h3{
+    text-decoration: none;
 }
