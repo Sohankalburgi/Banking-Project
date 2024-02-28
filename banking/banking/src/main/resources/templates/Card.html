@@ -3,24 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>card</title>
     <link rel="stylesheet" href="cardsheet2.css">
+<style>
+    
+.footer{
+    width: 110%;
+    height: 120px;
+    background-color: rgb(91, 139, 198);
+    margin-top: 10px;
+    display: flex; 
+}
+.footer_section{
+    width: 30%;
+    height: 120px;
+   box-shadow: 1px 1px 8px #00000042;
+    margin-right: 20%;
+    display: flex;
+    
+}
+.image_container{
+    width: 35%;
+    height: 120px;
+    display: flex;
+   
+}
+.image_container>img{
+    width: 100%;
+    height: 120px; 
+     
+}
+.linkedin{
+    width: 30px;
+    height: 30px;
+    margin:10% ;
+    display: flex;
+}
+.instagram{
+    width: 30px;
+    height: 30px;
+    margin:10% ;
+}
 
+.footer_section1{
+    width: 30%;
+    height: 120px;
+   box-shadow: 1px 1px 8px #00000042;
+    margin-right: 20%;
+    display: flex;
+    
+}
+.image_container1{
+    width: 35%;
+    height: 120px;
+    
+}
+.image_container1>img{
+    width: 100%;
+    height: 120px; 
+
+}
+.linkedin1{
+    width: 30px;
+    height: 30px;
+    margin:20% ;
+}
+a{
+    text-decoration: none;
+    color: hsl(181, 88%, 51%);
+}
+
+a:hover{
+    text-decoration:underline;
+    color:red;
+    
+   
+}
+header{
+                border-style: solid;
+                background-color:rgb(7, 4, 35);
+                padding: 40px;
+                box-sizing: 30%;
+                font-size:medium;
+     
+                }
+                body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        
+        .top_bar {
+            background-color: #08043b;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .top_bar img {
+            height: 40px;
+           
+        }
+        .top_bar h1,h2{
+                        display: inline;
+
+                        padding: 50px;
+                        position:relative;
+                        bottom: 10px;
+                        font-style: italic;
+
+                       }
+        
+        h1 {
+            text-align: center;
+            color: rgb(3, 3, 3);
+        }
+        h2{
+            
+            color: rgb(8, 209, 223);
+        }
+        nav{
+            text-align: center;
+            color: black;
+            display: inline;
+            font-style: italic;
+            font-size:x-large;
+            list-style:inside;
+                 }
+
+</style>
 </head>
-<body>
+<body style="background-color: gray;">
+    <header class="top_bar">
 
-<a th:href="@{/ChangePINCard(AccountNumber=${AccountNumber})}"> Change Your 4 -digit PIN</a>
+        <img src="images.png" alt="logo" >
+        <h2>Sample Bank </h2>
+    
+        <a href="aboutus.html"><h2>About us</h2></a>
+    
+       <a href="index"> <h2>Logout</h2></a>
+    
+    </header><br><br>
 
-<div>
+<a th:href="@{/ChangePINCard(AccountNumber=${AccountNumber})}"> <h1>Change Your 4 -digit PIN</h1></a><br><br><br>
+
+<nav>
+    <div>
     Card Number : <span th:text="${CardNumber}">CardNumber</span>
-    <br>
-    Name : <span th:text="${Name}"></span>
-    <br>
-    validility : <span th:text="${validity}"></span>
-    <br>
-    CVV : <span th:text="${CVV}"></span>
-    <br>
-    Type : <span th:text="${Type}"></span>
+    <br><br><br></div>
+    <div>Name : <span th:text="${Name}"></span>
+    <br><br><br></div>
+    <div>validility : <span th:text="${validity}"></span>
+    <br><br><br></div>
+    <div>CVV : <span th:text="${CVV}"></span>
+    <br><br><br></div>
+    <div>Type : <span th:text="${Type}"></span><br>
+</div>
+</table>
+</nav>
+
+
+<div class="footer">
+    <div class="footer_section">
+        <div class="image_container">
+            <img src="WKC PIC SQUARE.jpg" alt="shreyas">
+        </div>
+        <div class="details">
+          <a href="https://www.linkedin.com/in/shreyas-shanubag-626a66222" target="_blank">
+            <img class="linkedin"src="linkedin.jpg" alt="linkedin">
+            
+          </a>
+          
+          <h3>SHREYAS SHANUBAG</h3>
+        
+          
+        </div>
+
+    </div>
+    
+
+    <div class="footer_section1">
+        <div class="image_container1">
+            <img src="sohan.jpg" alt="sohan">
+        </div>
+        <div class="details1">
+            <a href="https://www.linkedin.com/in/sohan-kalburgi-225881277/" target="_blank">
+                <img class="linkedin1"src="linkedin.jpg" alt="linkedin">
+               
+              </a>
+              
+            
+            <H3>SOHAN K.E</H3>
+              
+        </div>
+
+    </div>
+
 </div>
 </body>
 </html>

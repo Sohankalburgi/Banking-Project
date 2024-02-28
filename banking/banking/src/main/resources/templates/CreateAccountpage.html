@@ -21,44 +21,87 @@
 <body th:data-erroh="${erroh}" >
     <header class="top_bar">
         <img src="images.png" alt="logo" >
+        
         <h1>Sample Bank </h1>
         <a href="aboutus.html"><h2>About us </h2></a>
         <a href="CreateAccountpage"><h2>Create New Account</h2></a>
         <a href="index"><h2>Login</h2></a>
     </header>
+    
+    <p style="color: blue; padding: 20px;"> <marquee  direction="right">welcome dear customer</marquee></p>
+    <marquee  direction="right" style="font-size:larger;">we are here for your assistance.</marquee>
+    <span><img src="bank gif.gif" alt="bank.gif" ></span>
+
 
     <form th:action="@{/CreateAccountpage}"  method="post"  th:object="${item}">
     	
-    	<!--  The name and id must be same as the field and the field should be only field not th:field -->
-    	<label for="AccountNumber">AccountNumber</label>
-    	<input th:field="*{AccountNumber}" type="text" minlength="14" maxlength="14" id="AccountNumber" name="AccountNumber">
-   		<span class="text-danger" th:errors="*{AccountNumber}"> </span> 
+    	<label for="AccountNumber">AccountNumber</label><br>
+    	<input th:field="*{AccountNumber}" type="text" minlength="14" maxlength="14" id="AccountNumber" name="AccountNumber" placeholder="enter your 14 digit Accountnumber" pattern="\d{14}">
+   		<span class="text-danger" th:errors="*{AccountNumber}"> </span> <br><br>
    		
-        <label for="Name">Name</label>
-        <input th:field="*{Name}" type="text" id="Name" name="Name">
-        <span class="text-danger" th:errors="*{Name}"> </span> 
+        <label for="Name">Name</label><br>
+        <input th:field="*{Name}" type="text" id="Name" name="Name" placeholder="enter your name" pattern="[A-Za-z\s]+" >
+        <span class="text-danger" th:errors="*{Name}"> </span> <br><br>
         
-        <label for="PhoneNumber">Phone Number</label>
-        <input th:field="*{PhoneNumber}" type="text" minlength="10" maxlength="10" name="PhoneNumber" id="PhoneNumber">
-        <span class="text-danger" th:errors="*{PhoneNumber}"> </span> 
+        <label for="PhoneNumber">Phone Number</label><br>
+        <input th:field="*{PhoneNumber}" type="text" minlength="10" maxlength="10" name="PhoneNumber" id="PhoneNumber" placeholder="enter your phone number" pattern="\d{10}">
+        <span class="text-danger" th:errors="*{PhoneNumber}"> </span> <br><br>
         
            
-        <label for="IFSC">IFSC CODE</label>
-        <input th:field="*{IFSC}" type="text" name="IFSC" id="IFSC">
-        <span class="text-danger" th:errors="*{IFSC}"> </span> 
+        <label for="IFSC">IFSC CODE</label><br>
+        <input th:field="*{IFSC}" type="text" name="IFSC" id="IFSC" placeholder="enter the IFSC code">
+        <span class="text-danger" th:errors="*{IFSC}"> </span><br> <br>
         
-        <label for="Address">Address</label>
-        <textarea th:field="*{Address}" rows="2" cols="50" name="address" id="address"></textarea>
-		<span class="text-danger" th:errors="*{Address}"> </span> 
+        <label for="Address">Address</label><br>
+        <textarea th:field="*{Address}" rows="2" cols="50" name="address" id="address" placeholder="enter your address"></textarea>
+		<span class="text-danger" th:errors="*{Address}"> </span> <br><br>
         <br>
-        <label for="SecurityCode">Security Code/PIN</label>
-        <input th:field="*{SecurityCode}" type="password" name="SecurityCode" id="SecurityCode" minlength="6"  maxlength="6">
-        <span class="text-danger" th:errors="*{SecurityCode}"> </span> 
+        <label for="SecurityCode">Security Code/PIN</label><br>
+        <input th:field="*{SecurityCode}" type="password" name="SecurityCode" id="SecurityCode" minlength="6"  maxlength="6" placeholder="enter the securitycode" pattern="\d{6}">
+        <span class="text-danger" th:errors="*{SecurityCode}"> </span> <br><br>
         
         <input type="hidden" field="*{balance}">
         
-        <button type="submit" id="submit">Create Account</button>
+        <button type="submit" id="submit">Create Account</button><br><br>
     </form>
+
+    <div class="footer">
+        <div class="footer_section">
+            <div class="image_container">
+                <img src="WKC PIC SQUARE.jpg" alt="shreyas">
+            </div>
+            <div class="details">
+              <a href="https://www.linkedin.com/in/shreyas-shanubag-626a66222" target="_blank">
+                <img class="linkedin"src="linkedin.jpg" alt="linkedin">
+                
+              </a>
+              
+              <h3>SHREYAS SHANUBAG</h3>
+            
+              
+            </div>
+
+        </div>
+        
+
+        <div class="footer_section1">
+            <div class="image_container1">
+                <img src="sohan.jpg" alt="sohan">
+            </div>
+            <div class="details1">
+                <a href="https://www.linkedin.com/in/sohan-kalburgi-225881277/" target="_blank">
+                    <img class="linkedin1"src="linkedin.jpg" alt="linkedin">
+                   
+                  </a>
+                  
+                
+                <H3>SOHAN K.E</H3>
+                  
+            </div>
+
+        </div>
+
+    </div>
      
 </body>
 </html>
