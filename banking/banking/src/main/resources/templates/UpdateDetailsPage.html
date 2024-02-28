@@ -28,7 +28,7 @@
             <br>
            <h2> <label for="PhoneNumber">Phone Number</label></h2>
             <br>
-            <input type="text"  th:field="*{PhoneNumber}" name="PhoneNumber" id="PhoneNumber" placeholder="enter PhoneNumber" pattern="\d{10}">
+            <input type="text"  th:field="*{PhoneNumber}" name="PhoneNumber" maxlength="10" minlength="10" id="PhoneNumber" placeholder="enter PhoneNumber" pattern="\d{10}">
             <br>
             <h2><label for="Address">Address</label></h2>
             <br>
@@ -36,7 +36,7 @@
             <br>
             <h2><label for="SecurityCode"> SecurityCode</label></h2>
             <br>
-            <input  type="password" th:field="*{SecurityCode}" name="SecurityCode" id="SecurityCode" placeholder="enter SecurityCode" pattern="\d{6}">
+            <input  type="password" th:field="*{SecurityCode}" name="SecurityCode" id="SecurityCode" placeholder="enter SecurityCode" maxlength="6" minlength="6" pattern="\d{6}">
             <br>
             <input type="hidden" th:field="*{AccountNumber}" name="AccountNumber" id="AccountNumber">
            	<input type="hidden" th:field="*{IFSC}" name="IFSC" id="IFSC">
