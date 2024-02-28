@@ -22,7 +22,8 @@
     <section>
         <a th:href="@{/Rtgs(AccountNumber=${bankfield.AccountNumber})}">RTGS/NEFT</a>
         <a th:href="@{/UPI(AccountNumber=${bankfield.AccountNumber})}">UPI Transfer</a>
-        
+        <a th:href="@{/Card(AccountNumber=${bankfield.AccountNumber})}">Card Details</a>
+        <a th:href="@{/ChangePINCard(AccountNumber=${bankfield.AccountNumber})}">Change Card PIN</a>
     </section>
     <figure>
     <img src="chek.gif" alt="chek.gif">
